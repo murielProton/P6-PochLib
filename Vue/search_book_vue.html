@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Poch'Lib</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  	</head>
+  	<body>
+		<div class="container">
+			<div id="section" >
+				<h1>Nouveau livre</h1>
+				<form action="" >
+					<label for="form-title">Titre du livre</label><br>
+					<input id="form-title" type="text" placeholder="any title ..."  name="form-title"><br>
+					<label for="form-author">Auteur</label><br>
+					<input id="form-author" type="text" placeholder="any name ..." name="form-author"><br><br>
+					<button id="book-search-button" type="button" onclick="searchForAListOfBooks()">Rechercher</button>
+					<br>
+					<button id="cancel-button" type="cancel" value="Annuler">Annuler</button>
+				  </form>	  
+			</div>
+			<div id="section" >
+				<h1>Résultats de la recherche</h1>
+				
+			</div>
+
+		</div>
+        <!--Scripts and other things-->
+        
+         <!--In the script at the end of the body always put the library first !-->
+         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+         <!--In second put all the local depedencies-->
+         <script src="../Controller/books-list.js"></script>
+         <script src="../Model/book.js"></script>
+         <!-- <link rel="stylesheet" type="text/css" href="pochLib-layout.css">-->
+  	</body>
+</html>
