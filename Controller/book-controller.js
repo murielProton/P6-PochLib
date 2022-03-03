@@ -1,5 +1,5 @@
-var sepcificBookURL = 'https://www.googleapis.com/books/v1/volumes?q=isbn:9782203071186';
 async function bookDisplayInHTML(){
+    var sepcificBookURL = 'https://www.googleapis.com/books/v1/volumes?q=isbn:9782203071186';
     let wantedBook = await Book(sepcificBookURL);
     document.getElementById("title").innerHTML = wantedBook.title;
     document.getElementById("author").innerHTML = wantedBook.author;
