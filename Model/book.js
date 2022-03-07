@@ -1,12 +1,30 @@
-//TODO googleBook must be set before all the other values of this objects are.
+//googleBook must be set before all the other values of this objects are.
+// I've aded an if line 10 to ensure that 
+// book.js:46 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'thumbnail')
+// doese not apear again
+// but there is an url for each images of this imageLinks so why error
+//TODO check if I can do without calling to ifNoImageIsFound(immageURL) line 58 and 52
+// TODO what if title autor or description is not found what does the code do ?
+var unavailableInformation ="Information manquante";
+var unavailableImageURL ="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Salesforce_P1_FR/unavailable.png";
 async function Book(sepcificBookURL){
     let myBook = new Object();
     myBook.googleBook = await fetchThisBook(sepcificBookURL);
-    myBook.title = getThisBookSTitle(googleBook);
-    myBook.author = getThisBookSAthor(googleBook);
-    myBook.description = getThisBookSDescription(googleBook);
-    myBook.imageURL = getThisBookSImage(googleBook);
-    myBook.smallImageURL = getThisBookSSmallImage(googleBook);
+    //check that all data exists
+    let checkedTitle = ifNoDataFound(getThisBookSTitle(googleBook));
+    let checkedAuthor = ifNoDataFound(getThisBookSAthor(googleBook));
+    let checkedDescription = ifNoDataFound(getThisBookSDescription(googleBook));
+    //make sure every variable of book has a value
+    myBook.title = checkedTitle;
+    myBook.author = checkedAuthor;
+    myBook.description = checkedDescription;
+    if(googleBook.volumeInfo.imageLinks){
+        myBook.imageURL = getThisBookSImage(googleBook);
+        myBook.smallImageURL = getThisBookSSmallImage(googleBook);
+    }else{
+        myBook.imageURL = unavailableImageURL;
+        myBook.smallImageURL = unavailableImageURL;
+    }
     return myBook;
 }
 async function fetchThisBook(sepcificBookURL){
@@ -16,27 +34,58 @@ async function fetchThisBook(sepcificBookURL){
     return googleBook;
 }
 function getThisBookSTitle(googleBook){
-    title = googleBook.items[0].volumeInfo.title;
-    console.log('title : ',title);
-    return title;
+    if(googleBook.volumeInfo.title){
+        return googleBook.volumeInfo.title;
+    }else{
+        return unavailableInformation;
+    }
 }
 function getThisBookSAthor(googleBook){
-    author = googleBook.items[0].volumeInfo.authors[0];
-    console.log('author : ',author);
-    return author;
+    if(googleBook.volumeInfo.authors){
+        if(googleBook.volumeInfo.authors[0]){
+            return googleBook.volumeInfo.authors[0];
+        }
+    }else{
+        return unavailableInformation;
+    }
 }
 function getThisBookSDescription(googleBook){
-    description = googleBook.items[0].volumeInfo.description;
-    console.log('description : ', description);
-    return description;
+    if(googleBook.volumeInfo.description){
+        return googleBook.volumeInfo.description;
+    }else{
+        return unavailableInformation;
+    }
 }
 function getThisBookSImage(googleBook){
-    imageURL = googleBook.items[0].volumeInfo.imageLinks.thumbnail;
-    console.log('image URL : ', imageURL);
-    return imageURL;
+    console.log('Image URL : ', googleBook.volumeInfo.imageLinks.thumbnail);
+
+   imageURL = googleBook.volumeInfo.imageLinks.thumbnail;
+   return imageURL;
+  /*   let checkedImageURL = ifNoImageIsFound(imageURL);
+    return checkedImageURL;*/
 }
 function getThisBookSSmallImage(googleBook){
-    smallImageURL = googleBook.items[0].volumeInfo.imageLinks.smallThumbnail;
-    console.log('small image URL : ', smallImageURL);
+    console.log('small image URL : ', googleBook.volumeInfo.imageLinks.smallThumbnail);
+    smallImageURL = googleBook.volumeInfo.imageLinks.smallThumbnail;
     return smallImageURL;
+    /*let checkedSmallImageURL = ifNoImageIsFound(smallImageURL);
+    return checkedSmallImageURL;*/
+}
+/*function ifNoImageIsFound(immageURL){
+    if(immageURL){
+        return immageURL;
+    }else{
+        console.log('image est null indeffinie ou vide');
+        let emptyImageURL = unavailableImageURL;
+        return emptyImageURL;
+    }
+}*/
+function ifNoDataFound(data){
+    if(data){
+        return data;
+    }else{
+        console.log('Description : Information manquante');
+        let emptyData = unavailableInformation;
+        return emptyData;
+    }
 }

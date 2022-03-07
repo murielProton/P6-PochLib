@@ -4,8 +4,15 @@ intitle: Returns results where the text following this keyword is found in the t
 inauthor: Returns results where the text following this keyword is found in the author.
 Here is an example of searching for Daniel Keyes' "Flowers for Algernon": 
 https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
+    "q="" stands for includes
+    "intitle:" for in the title you will find
+    "inauthor:" to define the author "+inauthor:" if you want to add it to title
+    "&startIndex=" the search result will start at this index
+    "&maxResults=" the search result will display up to x books, NB the maximum limit is 40
+    "&printType=books" to display only books
 */
 const URLforSearch = "https://www.googleapis.com/books/v1/volumes?q=";
+const numberOfResults =20;
 var listOfBooks =[];
 
 function getSearchTermsForTitle(){
@@ -19,66 +26,20 @@ function getSearchTermsForAuthor(){
     console.log("form author -> "+searchTermsForAuthor);
     return searchTermsForAuthor;
 }
-async function searchForBookListByTitle(inputTitle){
-    console.log("book List By Title after signature - ");
-    let bookListByTitle;
-    let urlToSearchByTitle = URLforSearch + "intitle:"+inputTitle;
-    const response = await fetch(urlToSearchByTitle);
-    console.log('response : ',response);
-    bookListByTitle = await response.json();
-    console.log("book List By Title - "+bookListByTitle);
-    refreshList(bookListByTitle);
-}
-async function searchForBookListByAuthor(intputAuthor){
-    let bookListByAuthor;
-    let urlToSearchByAuthor = URLforSearch + "inauthor:"+intputAuthor;
-    const response = await fetch(urlToSearchByAuthor);
-    console.log('response : ', response);
-    bookListByAuthor = await response.json();
-    console.log("book List by author - " +bookListByAuthor);
-    refreshList(bookListByAuthor);
-}
-
-async function searchForBookListByTitleAndAuthor(inputTitle, intputAuthor){
-    //TODO easer find URL that will fin a list of books that matches title and author
-    // easer find a way to iterate through [promise]
-    // cf https://stackoverflow.com/questions/40732541/javascript-promises-iterate-over-all-object-keys-arrays-and-then-resolve 
-    
-    let bookListByTitle;
-    const promiseListOfBookTitle = new Promise((resolve, reject) => {
-        resolve( bookListByTitle= searchForBookListByTitle(inputTitle)
-        )}
-    );
-    promiseListOfBookTitle.then((bookListByTitle)=> {
-        let bookListByTitleAndAuthor = [];
-        for(let i=0; i<bookListByTitle.items.length; i++) {
-            let currentBook = bookListByTitle.items[i];
-            console.log('je suis dans la boucle for i');
-            console.log('book '+i+" "+currentBook.volumeInfo);
-            if(currentBook.volumeInfo==null || currentBook.volumeInfo.authors == null){
-                continue;
-            }
-            let currentAuthors = currentBook.volumeInfo.authors;
-            console.log('je suis dans la boucle for y => '+currentAuthors);
-            for(let y=0; y<currentAuthors.length ; y++){
-                let currentAuthor= currentAuthors[y];
-                if(currentAuthor==intputAuthor){
-                    bookListByTitleAndAuthor.push(currentBook);
-                    console.log('je suis dans la boucle for y et dans le IF IFIIFIDIF');
-                }
-            }
-        }
-
-        refreshList(bookListByTitleAndAuthor);
-    });
-}
 
 function refreshList(newListOfBooks){
-    listOfBooks=newListOfBooks;
-    console.log('New size of listOfBooks : '+listOfBooks.items.length);
-    console.log('New totalItems of listOfBooks : '+listOfBooks.totalItems);
+    var listOfBooks;
+    const promiseGetListOfBooks = new Promise((resolve, reject) => {
+        resolve( listOfBooks=newListOfBooks
+        )}
+    );
+    promiseGetListOfBooks.then((listOfBooks) =>{
+        console.log('New size of listOfBooks : '+listOfBooks.items.length);
+        console.log('New totalItems of listOfBooks : '+listOfBooks.totalItems);
+        var totalOfItemsInList = listOfBooks.totalItems;
+        listOfBooksDisplayInHTML(listOfBooks);
+    });
 }
-
 
 async function searchForAListOfBooks(){
     searchTermsForTitle = getSearchTermsForTitle();
@@ -87,27 +48,23 @@ async function searchForAListOfBooks(){
     if (searchTermsForTitle && searchTermsForAuthor){
         urlToCall = urlToCall + "intitle:"+searchTermsForTitle
                         +"+"+ "inauthor:"+searchTermsForAuthor
-                        +"&startIndex=0&maxResults=40&printType=books";
+                        +"&startIndex=0&maxResults="+numberOfResults
+                        +"&printType=books";
     } else if (searchTermsForTitle){
-        urlToCall = urlToCall + "intitle:"+searchTermsForTitle+"&startIndex=0&maxResults=40&printType=books";
+        urlToCall = urlToCall + "intitle:"+searchTermsForTitle
+                        +"&startIndex=0&maxResults="+numberOfResults
+                        +"&printType=books";
     } else if(searchTermsForAuthor){
-        urlToCall = urlToCall + "inauthor:"+searchTermsForAuthor+"&startIndex=0&maxResults=40&printType=books";
+        urlToCall = urlToCall + "inauthor:"+searchTermsForAuthor
+                                            +"&startIndex=0&maxResults="+numberOfResults
+                                            +"&printType=books";
     }
     const response = await fetch(urlToCall);
     console.log('response : ', response);
     let list = await response.json();
-    console.log("book List by author - " +list);
+    console.log("book List - " +list);
+    //listToDisplay is not defined
     refreshList(list);
-    /*
-    if (searchTermsForTitle && searchTermsForAuthor){
-        searchForBookListByTitleAndAuthor(searchTermsForTitle, searchTermsForAuthor);
-    } else if (searchTermsForTitle && !searchTermsForAuthor){
-        searchForBookListByTitle(searchTermsForTitle);
-    } else if(searchTermsForAuthor && !searchTermsForTitle){
-        searchForBookListByAuthor(searchTermsForAuthor);
-    }else{
-        console.log("you have to search for some specific books.");
-    }
-    */ 
+
 }
 
