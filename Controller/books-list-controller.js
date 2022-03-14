@@ -6,23 +6,25 @@
 }
 */
 //
-function insertADivForOneBook(){
+function insertADivForOneBook(cardNumber){
     document.getElementById("result-display").innerHTML =
-    '<div class="card-body">' +
-        '<h5 id="title" onload="document.title"></h5>' +
-        '<p id="author"class="card-text">Author: </p>' +
-        '<p id="description"class="card-text">Description: </p>' +
-        '<p id ="smallImageURL" type="text" value="" src="">  </p>' +
+    '<div id=card-number-'+cardNumber+' class="card-body">' +
+        '<h5 id="title-'+cardNumber+'" class="card-text title"></h5>' +
+        '<p id="author-'+cardNumber+'"class="card-text author">Author: </p>' +
+        '<p id="description-'+cardNumber+'"class="card-text description">Description: </p>' +
+        '<p id="smallImageURL-'+cardNumber+'" class="card-image" type="text" value="" src="">  </p>' +
     '</div>';
 }
 async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
+    //first I erase all content fo the div with Id "result-display"
     document.getElementById("result-display").innerHTML = "";
     console.log( "nombre length taille de la boucle",listOfBooksToDisplay.items.length );
-        for(let i=0; i<listOfBooksToDisplay.items.length;i++ ){
+    //second I insert a div witch Id will be "card-number-"+i
+        for(let i=0; i<=listOfBooksToDisplay.items.length;i++ ){
             console.log("iteration -> "+i);
             let currentURL = listOfBooksToDisplay.items[i].selfLink;
-            insertADivForOneBook();
-            bookDisplayInHTML(currentURL);  
+            insertADivForOneBook(i);
+            bookDisplayInHTML(currentURL, i);  
         }
     
 }
