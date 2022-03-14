@@ -6,14 +6,15 @@
 }
 */
 //
-function insertADivForOneBook(){
-    document.getElementById("result-display").innerHTML =
-    '<div class="card-body">' +
+function insertADivForOneBook(cardNumber){
+    let bookCardToInsert = document.getElementById("result-display").innerHTML =
+    '<div id=card-number-'+cardNumber+' class="card-body">' +
         '<h5 id="title" onload="document.title"></h5>' +
         '<p id="author"class="card-text">Author: </p>' +
         '<p id="description"class="card-text">Description: </p>' +
         '<p id ="smallImageURL" type="text" value="" src="">  </p>' +
     '</div>';
+    document.createElement(bookCardToInsert);
 }
 async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
     document.getElementById("result-display").innerHTML = "";
@@ -21,10 +22,14 @@ async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
         for(let i=0; i<listOfBooksToDisplay.items.length;i++ ){
             console.log("iteration -> "+i);
             let currentURL = listOfBooksToDisplay.items[i].selfLink;
-            insertADivForOneBook();
-            bookDisplayInHTML(currentURL);  
+            
+            insertADivForOneBook(i);
+            bookDisplayInHTML(currentURL);
+            var valueOfID = "card-number-"+i;
+            var newCard =  getElementById(valueOfID);
+            var listOfBooksToDisplay = listOfBooksToDisplay +newCard;
         }
-    
+    document.getElementById("result-display").innerHTML = listOfBooksToDisplay;
 }
 
 

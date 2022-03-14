@@ -3,8 +3,8 @@
 // book.js:46 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'thumbnail')
 // doese not apear again
 // but there is an url for each images of this imageLinks so why error
-//TODO check if I can do without calling to ifNoImageIsFound(immageURL) line 58 and 52
-// TODO what if title autor or description is not found what does the code do ?
+// check if I can do without calling to ifNoImageIsFound(immageURL) line 58 and 52 07/03 it's ok to have it the way it is now
+// 
 var unavailableInformation ="Information manquante";
 var unavailableImageURL ="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Salesforce_P1_FR/unavailable.png";
 async function Book(sepcificBookURL){
