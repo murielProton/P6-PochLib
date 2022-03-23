@@ -10,33 +10,27 @@
     
     async function fetchBookABook(sepcificBookURL) {
         const response = await fetch(sepcificBookURL);
-        console.log('response : ',response);
         oneSpecifiedBoockOnly = await response.json();
         return oneSpecifiedBoockOnly;
     }
     function fetchTitle(oneSpecifiedBoockOnly) {
         title = oneSpecifiedBoockOnly.items[0].volumeInfo.title;
-        console.log('title : ',title);
         return title;
     }
     function fetchAuthor(oneSpecifiedBoockOnly){
         author = oneSpecifiedBoockOnly.items[0].volumeInfo.authors[0];
-        console.log('author : ',author);
         return author;
     }
     function fetchDescription(oneSpecifiedBoockOnly){
         description = oneSpecifiedBoockOnly.items[0].volumeInfo.description;
-        console.log('description : ', description);
         return description;
     }
     function fetchImageURL(oneSpecifiedBoockOnly){
         imageURL = oneSpecifiedBoockOnly.items[0].volumeInfo.imageLinks.thumbnail;
-        console.log('image URL : ', imageURL);
         return imageURL;
     }
     function fetchSmallImageURL(oneSpecifiedBoockOnly){
         smallImageURL = oneSpecifiedBoockOnly.items[0].volumeInfo.imageLinks.smallThumbnail;
-        console.log('small image URL : ', smallImageURL);
         return smallImageURL;
     }
     /*----*/
@@ -65,7 +59,6 @@ function init(){
         description = fetchDescription(oneSpecifiedBoockOnly);
         imageURL = fetchImageURL(oneSpecifiedBoockOnly);
         smallImageURL = fetchSmallImageURL(oneSpecifiedBoockOnly);
-        console.log('success !');
       });
       promise2.then((resolve, reject)=>{
         resolve(diplayAllValuesOfThisBook());
