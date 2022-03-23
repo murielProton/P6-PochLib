@@ -14,10 +14,12 @@ async function Book(sepcificBookURL){
     let checkedTitle = ifNoDataFound(getThisBookSTitle(googleBook));
     let checkedAuthor = ifNoDataFound(getThisBookSAthor(googleBook));
     let checkedDescription = ifNoDataFound(getThisBookSDescription(googleBook));
+    let checkedIsbn = ifNoDataFound(getThisBookSIsbn(googleBook));
     //make sure every variable of book has a value
     myBook.title = checkedTitle;
     myBook.author = checkedAuthor;
     myBook.description = checkedDescription;
+    myBook.isbn = checkedIsbn;
     if(googleBook.volumeInfo.imageLinks){
         myBook.imageURL = getThisBookSImage(googleBook);
         myBook.smallImageURL = getThisBookSSmallImage(googleBook);
@@ -52,6 +54,13 @@ function getThisBookSAthor(googleBook){
 function getThisBookSDescription(googleBook){
     if(googleBook.volumeInfo.description){
         return googleBook.volumeInfo.description;
+    }else{
+        return unavailableInformation;
+    }
+}
+function getThisBookSIsbn(googleBook){
+    if(googleBook.volumeInfo.industryIdentifiers[0].identifier){
+        return googleBook.volumeInfo.industryIdentifiers[0].identifier;
     }else{
         return unavailableInformation;
     }

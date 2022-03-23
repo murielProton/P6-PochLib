@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" onload="deleteLocalStorageContent()"></html>>
 	<head>
 		<title>Poch'Lib</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
   	</head>
-  	<body>
+  	<body  onload="displayLocalStorageInMyPochList()">
 		<div class="container">
 			<div id="section" >
 				<h1>Nouveau livre</h1>
@@ -16,7 +16,9 @@
 					<input id="form-author" type="text" placeholder="any name ..." name="form-author"><br><br>
 					<button id="book-search-button" type="button" onclick="searchForAListOfBooks()">Rechercher</button>
 					<br>
-					<button id="cancel-button" type="cancel" value="Annuler">Annuler</button>
+					<br>
+					<button id="cancel-button" type="cancel" value="Annuler" onclick="">Annuler</button>
+					
 				  </form>	  
 			</div>
 			<div id="section-result-of-search" >
@@ -27,13 +29,14 @@
 			<div id="my-pock-list" >
 				<h1>Ma poch'liste</h1>
 				<div id="my-pock-list-display"></div>
+				<button id="cancel-button" type="cancel" value="Annuler" onclick="deleteLocalStorageContent()">Vider Ma Poch'List</button>
 				
 			</div>
 
 		</div>
         <!--Scripts and other things-->
         
-         <!--In the script at the end of the body always put the library first !-->
+         <!--In the script at the end of the body always put the library first -->
          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		 <script src="https://kit.fontawesome.com/7fab9bbed0.js" crossorigin="anonymous"></script>
          <!--In second put all the local depedencies-->

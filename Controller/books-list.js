@@ -39,6 +39,8 @@ function refreshList(newListOfBooks){
 }
 
 async function searchForAListOfBooks(){
+    //TODO if googleBook.volumeInfo.industryIdentifiers[0].identifier is null please do not get this book get to the next one
+    // google search : isbn: Returns results where the text following this keyword is the ISBN number.
     searchTermsForTitle = getSearchTermsForTitle();
     searchTermsForAuthor = getSearchTermsForAuthor();
     let urlToCall = URLforSearch;

@@ -1,34 +1,38 @@
-async function populateMyPochListDiv(url){
+function populateMyPochListDiv(isbn, url){
+    saveDataInLocalStorage(isbn, url);
+    console.log('populateMyPochListDiv ISBN : '+isbn)
+    displayLocalStorageInMyPochList();
+}
+async function displayLocalStorageInMyPochList(){
     //first I erase all content fo the div with Id "result-display"
     document.getElementById("my-pock-list-display").innerHTML = "";
-    let numberOfItemsInLocalStorage = keyGenerator();
-    saveDataInLocalStorage(localStorage.clickcount, url);
-    let listOfDivTagsToDisplay = await getListOfItemsFromLocalStorage(numberOfItemsInLocalStorage);
+    let listOfDivTagsToDisplay = await getListOfItemsFromLocalStorage();
     document.getElementById("my-pock-list-display").innerHTML = listOfDivTagsToDisplay;
 }
 function saveDataInLocalStorage(key, url){
+    console.log('saveDataInLocalStorage ISBN : '+key)
    localStorage.setItem(key, url);
 }
-function keyGenerator(){
-    if (localStorage.clickcount) {
-        localStorage.clickcount = Number(localStorage.clickcount) + 1;
-
-    } else {
-        localStorage.clickcount = 0;
-    }
-    return localStorage.clickcount;
-}
-async function getListOfItemsFromLocalStorage(numberOfItemsInLocalStorage){
+async function getListOfItemsFromLocalStorage(){
     let listOfDivTagsToDisplay ;
-    for(let i =0; i<=numberOfItemsInLocalStorage ;i++){
-        let urlOfBook = localStorage.getItem(i);
-        console.log("local storage  "+ urlOfBook);
+    for(let i =0; i < localStorage.length ;i++){
+        let urlOfBook = localStorage.getItem(localStorage.key(i));
+        console.log("local storage  book url - "+ urlOfBook);
         // The next line set a variable with an async fuction, Therefor an AWAIT is required.
         let newDivTagForMyPochList = await divBookWithGoogleInput(i, urlOfBook);
         listOfDivTagsToDisplay = listOfDivTagsToDisplay+newDivTagForMyPochList;
+        console.log("newDivTagForMyPochList - "+ newDivTagForMyPochList);
     }
+    console.log("local storage  list to display - "+ listOfDivTagsToDisplay);
     return listOfDivTagsToDisplay;
 }
-function removeBookFromMyPochList(key){
-    localStorage.removeItem(key);
+function removeABookFromMyPochList(keyIsbn){
+    localStorage.removeItem(keyIsbn);
+    displayLocalStorageInMyPochList();
+}
+
+//This methodes deletes all items in localStorage and reset the number of books in storage to 0.
+function deleteLocalStorageContent(){
+    localStorage.clickcount = 0;
+    localStorage.clear();
 }
