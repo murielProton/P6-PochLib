@@ -23,7 +23,6 @@ function getSearchTermsForTitle(){
 function getSearchTermsForAuthor(){
     // Selecting the input for the author and get its value 
     searchTermsForAuthor = document.getElementById("form-author").value;
-    console.log("form author -> "+searchTermsForAuthor);
     return searchTermsForAuthor;
 }
 
@@ -34,8 +33,6 @@ function refreshList(newListOfBooks){
         )}
     );
     promiseGetListOfBooks.then((listOfBooks) =>{
-        console.log('New size of listOfBooks : '+listOfBooks.items.length);
-        console.log('New totalItems of listOfBooks : '+listOfBooks.totalItems);
         var totalOfItemsInList = listOfBooks.totalItems;
         listOfBooksDisplayInHTML(listOfBooks);
     });
@@ -60,9 +57,7 @@ async function searchForAListOfBooks(){
                                             +"&printType=books";
     }
     const response = await fetch(urlToCall);
-    console.log('response : ', response);
     let list = await response.json();
-    console.log("book List - " +list);
     //listToDisplay is not defined
     refreshList(list);
 
