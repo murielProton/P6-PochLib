@@ -15,7 +15,8 @@ async function Book(sepcificBookURL){
     //check that all data exists
     let checkedTitle = ifNoDataFound(getThisBookSTitle(googleBook));
     let checkedAuthor = ifNoDataFound(getThisBookSAthor(googleBook));
-    let checkedDescription = ifNoDataFound(getThisBookSDescription(googleBook));
+    let fullDescription = ifNoDataFound(getThisBookSDescription(googleBook));
+    let checkedDescription = getTheFirstTwoHundredCharacters(fullDescription);
     let checkedIsbn = ifNoDataFound(getThisBookSIsbn(googleBook));
     //make sure every variable of book has a value
     myBook.title = checkedTitle;
@@ -106,4 +107,13 @@ function ifNoDataFound(data){
         let emptyData = unavailableInformation;
         return emptyData;
     }
+}
+function getTheFirstTwoHundredCharacters(fullDescription){
+    let checkedDescription ;
+    if(fullDescription.length > 196){
+        checkedDescription = fullDescription.slice(0,195)+' ...';
+    } else{
+        checkedDescription = fullDescription;
+    }
+    return checkedDescription;
 }
