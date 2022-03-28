@@ -5,11 +5,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
   	</head>
-  	<body  onload="displayLocalStorageInMyPochList()">
+  	<body  onload="onloadDisplay()">
 		<div class="container">
 			<div id="section" >
 				<h1>Nouveau livre</h1>
-				<form action="" >
+				<button id="new-book-button" type="cancel" value="new-book" onclick="newBookButtonDisplayForm()">Nouveau Livre</button>
+				<br>
+				<form id="search-form" action="" >
 					<label for="form-title">Titre du livre</label><br>
 					<input id="form-title" type="text" placeholder="any title ..."  name="form-title"><br>
 					<label for="form-author">Auteur</label><br>
@@ -17,9 +19,8 @@
 					<button id="book-search-button" type="button" onclick="searchForAListOfBooks()">Rechercher</button>
 					<br>
 					<br>
-					<button id="cancel-button" type="cancel" value="Annuler" onclick="">Annuler</button>
-					
-				  </form>	  
+					<button id="cancel-button" type="cancel" value="Annuler" onclick="cancelDisplayOfSearchForm()">Annuler</button>
+				</form>	  
 			</div>
 			<div id="section-result-of-search" >
 				<h1>Résultats de la recherche</h1>
@@ -45,6 +46,7 @@
          <script src="../Model/book.js"></script>
 		 <script src="../Controller/book-controller.js"></script>
 		 <script src="../Controller/session-controller.js"></script>
+		 <script src="../Controller/vue-handeling.js"></script>
          <!-- <link rel="stylesheet" type="text/css" href="pochLib-layout.css">-->
   	</body>
 </html>
