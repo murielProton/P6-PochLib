@@ -6,6 +6,8 @@
 //TODO check if I can do without calling to ifNoImageIsFound(immageURL) line 58 and 52
 // TODO what if title autor or description is not found what does the code do ?
 var unavailableInformation ="Information manquante";
+var counter;
+var fakeISBN;
 var unavailableImageURL ="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Salesforce_P1_FR/unavailable.png";
 async function Book(sepcificBookURL){
     let myBook = new Object();
@@ -19,13 +21,20 @@ async function Book(sepcificBookURL){
     myBook.title = checkedTitle;
     myBook.author = checkedAuthor;
     myBook.description = checkedDescription;
-    myBook.isbn = checkedIsbn;
+    
     if(googleBook.volumeInfo.imageLinks){
         myBook.imageURL = getThisBookSImage(googleBook);
         myBook.smallImageURL = getThisBookSSmallImage(googleBook);
     }else{
         myBook.imageURL = unavailableImageURL;
         myBook.smallImageURL = unavailableImageURL;
+    }
+    //if googleBook.volumeInfo.industryIdentifiers[0].identifier is null please get this book with a fake iSBN
+    if(googleBook.volumeInfo.industryIdentifiers){
+        myBook.isbn = checkedIsbn;
+    }else{
+        counter = counter+1;
+        myBook.isbn = unavailableInformation + counter;
     }
     return myBook;
 }
