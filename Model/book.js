@@ -117,3 +117,4 @@ function getTheFirstTwoHundredCharacters(fullDescription){
     }
     return checkedDescription;
 }
+
