@@ -1,9 +1,9 @@
 function newBookButtonDisplayForm(){
-    var htmlButtonToDisplay = document.getElementById("new-book-button");
+    var idButtonToToggle = "new-book-button";
     var htmlElementToDisplay = document.getElementById("search-form");
     if (htmlElementToDisplay.style.display === "none") {
         htmlElementToDisplay.style.display = "block";
-        htmlButtonToDisplay.display = "none";
+        hideElement(idButtonToToggle);
     } else {
         htmlElementToDisplay.style.display = "none";
     }
@@ -31,4 +31,7 @@ function hideBookmark(){
 function toggleBookmark(){
     var element = document.getElementById("bookmark");
     element.classList.toggle("block");
+}
+function hideElement(iDOfButton){
+    document.getElementById(iDOfButton).style.visibility = 'hidden';
 }
