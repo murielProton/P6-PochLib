@@ -17,7 +17,7 @@ async function Book(sepcificBookURL){
     let checkedAuthor = ifNoDataFound(getThisBookSAthor(googleBook));
     let fullDescription = ifNoDataFound(getThisBookSDescription(googleBook));
     let checkedDescription = getTheFirstTwoHundredCharacters(fullDescription);
-    let checkedIsbn = ifNoDataFound(getThisBookSIsbn(googleBook));
+   // let checkedIsbn = ifNoDataFound(getThisBookSIsbn(googleBook));
     //make sure every variable of book has a value
     myBook.title = checkedTitle;
     myBook.author = checkedAuthor;
@@ -32,6 +32,7 @@ async function Book(sepcificBookURL){
     }
     //if googleBook.volumeInfo.industryIdentifiers[0].identifier is null please get this book with a fake iSBN
     if(googleBook.volumeInfo.industryIdentifiers){
+        let checkedIsbn = ifNoDataFound(getThisBookSIsbn(googleBook));
         myBook.isbn = checkedIsbn;
     }else{
         counter = counter+1;
