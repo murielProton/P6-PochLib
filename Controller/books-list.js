@@ -34,7 +34,12 @@ function refreshList(newListOfBooks){
     );
     promiseGetListOfBooks.then((listOfBooks) =>{
         var totalOfItemsInList = listOfBooks.totalItems;
-        listOfBooksDisplayInHTML(listOfBooks);
+        if (totalOfItemsInList.length < 1 || totalOfItemsInList.length == null){
+            var errorMessage = 'Aucun livre n’a été trouvé.';
+            divErrorNoBooksWereFound(errorMessage);
+        }else{
+            listOfBooksDisplayInHTML(listOfBooks);
+        }
     });
 }
 async function searchForAListOfBooks(){
@@ -60,6 +65,10 @@ async function searchForAListOfBooks(){
     let list = await response.json();
     //listToDisplay is not defined
     refreshList(list);
+   // resetSearchTerms();
+}
+// TODO mayby reset the search terms to null. 
+function resetSearchTerms(){
 
 }
 

@@ -27,7 +27,8 @@ async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
     let listOfDivTagsToDisplay ;
     if (listOfBooksToDisplay){
         if (listOfBooksToDisplay.items.length ==0){
-            listOfDivTagsToDisplay ="<p>Aucun livre n’a été trouvé.</p>";
+            listOfDivTagsToDisplay ="Aucun livre n’a été trouvé.";
+            divErrorNoBooksWereFound(listOfDivTagsToDisplay);
         }
         else if (listOfBooksToDisplay.items.length == 1){
             let thisURL = listOfBooksToDisplay.items[i].selfLink;
