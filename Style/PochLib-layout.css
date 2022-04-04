@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 900;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+.align-center-button {
+  align-items: center;
+  margin: auto;
+  display: flex;
+}
+
+.card-body {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.description {
+  width: 100%;
+  height: 35%;
+  vertical-align: top;
+}
+
+.card-image {
+  width: 65%;
+  height: 65%;
+  margin: auto;
+  display: block;
+}
+
+#my-pock-list-display .card-body > #bookmark {
+  display: none;
+  vertical-align: top;
+}
+
+#result-display .card-body > #trash {
+  display: none;
+}
+
+@media only screen and (max-width: 320px) {
+  /*style for smart phones*/
+}
+@media only screen and (min-width: 321px) and (max-width: 799px) {
+  /*style for tablets*/
+  div .card-body {
+    width: 40%;
+    height: 40%;
+    margin: 2%;
+  }
+}
+@media only screen and (min-width: 800px) {
+  /*style for all other screens*/
+  div .card-body {
+    width: 20%;
+    height: 20%;
+    margin: 2%;
+  }
+}
+
+/*# sourceMappingURL=PochLib-layout.css.map */

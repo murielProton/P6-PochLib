@@ -11,27 +11,27 @@ function newBookButtonDisplayForm(){
 function onloadDisplay(){
     displayLocalStorageInMyPochList();
     document.getElementById("search-form").style.display = "none";
+    diplayInMyPockList();
 }
 function cancelDisplayOfSearchForm(){
     document.getElementById("search-form").style.display = "none";
     document.getElementById("result-display").innerHTML = "";
 }
-function showTrash(){
-    document.getElementById("trash").style.display = "block";
+function diplayInResultDisplay(){
+    var idButtonToToggleTrash ="trash";
+    var idButtonToToggleBookMark ="bookmark";
+    hideElement(idButtonToToggleTrash);
+    displayElement(idButtonToToggleBookMark);
 }
-function hideTrash(){
-    document.getElementById("trash").style.display = "none";
+function diplayInMyPockList(){
+    var idButtonToToggleTrash ="trash";
+    var idButtonToToggleBookMark ="bookmark";
+    hideElement(idButtonToToggleBookMark);
+    displayElement(idButtonToToggleTrash);
 }
-function showBookmark(){
-    document.getElementById("bookmark").style.display = "block";
+function hideElement(elementsID){
+    document.getElementById(elementsID).style.visibility = 'hidden';
 }
-function hideBookmark(){
-    document.getElementById("bookmark").style.display = "none";
-}
-function toggleBookmark(){
-    var element = document.getElementById("bookmark");
-    element.classList.toggle("block");
-}
-function hideElement(iDOfButton){
-    document.getElementById(iDOfButton).style.visibility = 'hidden';
+function displayElement(elementsID){
+    document.getElementById(elementsID).style.visibility = 'visible';
 }

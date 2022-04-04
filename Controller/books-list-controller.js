@@ -12,9 +12,9 @@ async function divBookWithGoogleInput(cardNumber, ABookURL){
     var specificBookISBN = wantedBook.isbn ;
     let divCardToInsert =  '<div id=card-number-'+cardNumber+' class="card-body" src='+sepcificBookURL+'>' +
         '<button id="bookmark" class="btn"><i class="fa-solid fa-bookmark" onclick= "populateMyPochListDiv(\''+ specificBookISBN +'\',\''+ sepcificBookURL +'\')"></i></button><br>' +
-        '<h5 id="title-'+cardNumber+'" class="card-text title">'+wantedBook.title+'</h5>' +
-        '<p id="author-'+cardNumber+'"class="card-text author">Author: '+wantedBook.author+'</p>' +
-        '<p id="description-'+cardNumber+'"class="card-text description">Description: '+wantedBook.description+'</p>' +
+        '<div id="div-title-'+cardNumber+' class=title"><h3 id="title-'+cardNumber+'" class="card-text title">'+wantedBook.title+'</h3></div>' +
+        '<div id="div-author-'+cardNumber+' class=author"><p id="author-'+cardNumber+'"class="card-text author">Author: '+wantedBook.author+'</p></div>' +
+        '<div id="div-description-'+cardNumber+' class=description"><p id="description-'+cardNumber+'"class="card-text description">Description: '+wantedBook.description+'</p></div>' +
         '<img id="smallImageURL-'+cardNumber+'" class="card-image" type="text" value="" src="'+wantedBook.smallImageURL+'" /><br>' +
         '<p id="ISBN-'+cardNumber+'" class="card-text ISBN">ISBN: '+specificBookISBN+'</p>' +
         '<button id="trash" class="btn"><i class="fa-solid fa-trash" onclick= "removeABookFromMyPochList(\''+specificBookISBN+'\')"></i></button>' +
