@@ -26,19 +26,20 @@ function getSearchTermsForAuthor(){
     return searchTermsForAuthor;
 }
 
-function refreshList(newListOfBooks){
-    var listOfBooks;
+function refreshList(googleResponse){
+    var googleObjectContainingListOfBooks;
     const promiseGetListOfBooks = new Promise((resolve, reject) => {
-        resolve( listOfBooks=newListOfBooks
+        resolve( googleObjectContainingListOfBooks=googleResponse
         )}
     );
-    promiseGetListOfBooks.then((listOfBooks) =>{
-        var totalOfItemsInList = listOfBooks.totalItems;
-        if (totalOfItemsInList.length < 1 || totalOfItemsInList.length == null){
+    promiseGetListOfBooks.then((googleObjectContainingListOfBooks) =>{
+        // googleObjectContainingListOfBooks is an object composed of totalItems
+        // totalItems is the number of books composing this object.
+        if (googleObjectContainingListOfBooks.totalItems < 1 || googleObjectContainingListOfBooks.totalItems == null){
             var errorMessage = 'Aucun livre n’a été trouvé.';
             divErrorNoBooksWereFound(errorMessage);
         }else{
-            listOfBooksDisplayInHTML(listOfBooks);
+            listOfBooksDisplayInHTML(googleObjectContainingListOfBooks);
         }
     });
 }
@@ -62,9 +63,9 @@ async function searchForAListOfBooks(){
                                             +"&printType=books";
     }
     const response = await fetch(urlToCall);
-    let list = await response.json();
+    let googleResponse = await response.json();
     //listToDisplay is not defined
-    refreshList(list);
+    refreshList(googleResponse);
    // resetSearchTerms();
 }
 // TODO mayby reset the search terms to null. 
