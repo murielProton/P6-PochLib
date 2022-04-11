@@ -30,8 +30,8 @@ function diplayInMyPockList(){
     displayElement(idButtonToToggleTrash);
 }
 function hideElement(elementsID){
-    document.getElementById(elementsID).style.visibility = 'hidden';
+    document.getElementById(elementsID).style.display = 'none';
 }
 function displayElement(elementsID){
-    document.getElementById(elementsID).style.visibility = 'visible';
+    document.getElementById(elementsID).style.display = 'none';
 }
