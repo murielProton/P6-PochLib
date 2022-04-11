@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" onload="deleteLocalStorageContent()"></html>>
+<html lang="fr" onload="deleteLocalStorageContent()"></html>
 	<head>
 		<title>Poch'Lib</title>
 		<meta charset="utf-8" />
@@ -8,30 +8,34 @@
   	</head>
   	<body  onload="onloadDisplay()">
 		<div class="container">
-			<div id="section" >
-				<h1>Nouveau livre</h1>
-				<div  class"align-center-button"><button id="new-book-button" type="cancel" value="new-book" onclick="newBookButtonDisplayForm()">Nouveau Livre</button></div>
-				<br>
-				<form id="search-form" action="" >
-					<label for="form-title">Titre du livre</label><br>
-					<input id="form-title" type="text" placeholder="any title ..."  name="form-title"><br>
-					<label for="form-author">Auteur</label><br>
-					<input id="form-author" type="text" placeholder="any name ..." name="form-author"><br><br>
-					<button id="book-search-button" type="button" onclick="searchForAListOfBooks()">Rechercher</button>
+			<div class="background-colour-grey">
+				<img id="logo" src="../Image/logo.png" alt="logo"/>
+			</div>
+			<div id="search-section" class="search-section">
+					<div id="section-form" class="section-form">
+					<h1>Nouveau livre</h1>
+					<button id="new-book-button" class="green-button center-element" type="cancel" value="new-book" onclick="newBookButtonDisplayForm()">Ajouter un livre</button>
 					<br>
-					<br>
-					<button id="cancel-button" type="cancel" value="Annuler" onclick="cancelDisplayOfSearchForm()">Annuler</button>
-				</form>	  
+					<form id="search-form" action="" >
+						<label for="form-title">Titre du livre</label><br>
+						<input id="form-title" type="text" placeholder="any title ..."  name="form-title"><br>
+						<label for="form-author">Auteur</label><br>
+						<input id="form-author" type="text" placeholder="any name ..." name="form-author"><br><br>
+						<button id="book-search-button" class="green-button" type="button" onclick="searchForAListOfBooks()">Rechercher</button>
+						<br>
+						<button id="cancel-search-button" class="red-button" type="cancel" value="Annuler" onclick="cancelDisplayOfSearchForm()">Annuler</button>
+					</form>	  
+				</div>																	
 			</div>
 			<div id="section-result-of-search" >
-				<h1>Résultats de la recherche</h1>
+				
 				<div id="result-display"></div>
 				
 			</div>
 			<div id="my-pock-list" >
 				<h1>Ma poch'liste</h1>
 				<div id="my-pock-list-display"></div>
-				<button id="cancel-button" type="cancel" value="Annuler" onclick="deleteLocalStorageContent()">Vider Ma Poch'List</button>
+				<button id="delet-pock-list-button" class="red-button align-element-left" type="cancel" value="Annuler" onclick="deleteLocalStorageContent()">Vider Ma Poch'List</button>
 				
 			</div>
 
