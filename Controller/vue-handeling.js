@@ -11,7 +11,6 @@ function newBookButtonDisplayForm(){
 function onloadDisplay(){
     displayLocalStorageInMyPochList();
     document.getElementById("search-form").style.display = "none";
-    diplayInMyPockList();
 }
 function cancelDisplayOfSearchForm(){
     document.getElementById("search-form").style.display = "none";
@@ -22,12 +21,6 @@ function diplayInResultDisplay(){
     var idButtonToToggleBookMark ="bookmark";
     hideElement(idButtonToToggleTrash);
     displayElement(idButtonToToggleBookMark);
-}
-function diplayInMyPockList(){
-    var idButtonToToggleTrash ="trash";
-    var idButtonToToggleBookMark ="bookmark";
-    hideElement(idButtonToToggleBookMark);
-    displayElement(idButtonToToggleTrash);
 }
 function hideElement(elementsID){
     document.getElementById(elementsID).style.display = 'none';
