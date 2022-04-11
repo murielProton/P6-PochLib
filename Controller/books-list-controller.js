@@ -11,20 +11,20 @@ async function divBookWithGoogleInput(cardNumber, ABookURL){
     let wantedBook = await Book(sepcificBookURL);
     var specificBookISBN = wantedBook.isbn ;
     let divCardToInsert =  '<div id=card-number-'+cardNumber+' class="card-body" src='+sepcificBookURL+'>' +
-        '<button id="bookmark" class="btn"><i class="fa-solid fa-bookmark" onclick= "populateMyPochListDiv(\''+ specificBookISBN +'\',\''+ sepcificBookURL +'\')"></i></button><br>' +
-        '<div id="div-title-'+cardNumber+' class=title"><h3 id="title-'+cardNumber+'" class="card-text title">'+wantedBook.title+'</h3></div>' +
-        '<div id="div-author-'+cardNumber+' class=author"><p id="author-'+cardNumber+'"class="card-text author">Author: '+wantedBook.author+'</p></div>' +
-        '<div id="div-description-'+cardNumber+' class=description"><p id="description-'+cardNumber+'"class="card-text description">Description: '+wantedBook.description+'</p></div>' +
-        '<img id="smallImageURL-'+cardNumber+'" class="card-image" type="text" value="" src="'+wantedBook.smallImageURL+'" /><br>' +
-        '<p id="ISBN-'+cardNumber+'" class="card-text ISBN">ISBN: '+specificBookISBN+'</p>' +
-        '<button id="trash" class="btn"><i class="fa-solid fa-trash" onclick= "removeABookFromMyPochList(\''+specificBookISBN+'\')"></i></button>' +
+        '<button id="bookmark-'+cardNumber+'" class="btn bookmark"><i class="fa-solid fa-bookmark card-component" onclick= "populateMyPochListDiv(\''+ specificBookISBN +'\',\''+ sepcificBookURL +'\')"></i></button><br>' +
+        '<div id="div-title-'+cardNumber+'" class="card-title card-component"><h3 id="title-'+cardNumber+'" class="card-text title">'+wantedBook.title+'</h3><br></div>' +
+        '<div id="div-author-'+cardNumber+'" class="card-author card-component"><p id="author-'+cardNumber+'"class="card-text author">Author: '+wantedBook.author+'</p></div>' +
+        '<div id="div-description-'+cardNumber+'" class="card-description card-component"><p id="description-'+cardNumber+'"class="card-text description">Description: '+wantedBook.description+'</p></div>' +
+        '<img id="smallImageURL-'+cardNumber+'" class="card-image card-component" type="text" value="" src="'+wantedBook.smallImageURL+'" /><br>' +
+        '<p id="ISBN-'+cardNumber+'" class="card-text ISBN card-component">ISBN: '+specificBookISBN+'</p>' +
+        '<button id="trash-'+cardNumber+'" class="btn"><i class="fa-solid fa-trash card-component" onclick= "removeABookFromMyPochList(\''+specificBookISBN+'\')"></i></button>' +
     '</div>';
     return divCardToInsert;
 }
 async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
     //first I erase all content fo the div with Id "result-display"
     document.getElementById("result-display").innerHTML = "";
-    let listOfDivTagsToDisplay ;
+    let listOfDivTagsToDisplay = "<h1>Résultats de la recherche</h1>";
     if (listOfBooksToDisplay){
         if (listOfBooksToDisplay.items.length ==0){
             //listOfDivTagsToDisplay ="<p>Aucun livre n’a été trouvé.</p>";
