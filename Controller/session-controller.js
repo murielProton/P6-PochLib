@@ -19,7 +19,7 @@ async function getListOfItemsFromLocalStorage(){
         let urlOfBook = localStorage.getItem(localStorage.key(i));
         console.log("local storage  book url - "+ urlOfBook);
         // The next line set a variable with an async fuction, Therefor an AWAIT is required.
-        let newDivTagForMyPochList = await divBookWithGoogleInput(i, urlOfBook);
+        let newDivTagForMyPochList = await divBookWithGoogleInput(i, urlOfBook, true);
         listOfDivTagsToDisplay = listOfDivTagsToDisplay+newDivTagForMyPochList;
         console.log("newDivTagForMyPochList - "+ newDivTagForMyPochList);
     }

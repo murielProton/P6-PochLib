@@ -1,3 +1,4 @@
+let isItInMyPockList;
 function newBookButtonDisplayForm(){
     var idButtonToToggle = "new-book-button";
     var htmlElementToDisplay = document.getElementById("search-form");
@@ -27,4 +28,11 @@ function hideElement(elementsID){
 }
 function displayElement(elementsID){
     document.getElementById(elementsID).style.display = 'none';
+}
+function whichButtonToDisplay(isItInMyPockList, specificBookISBN, cardNumber, sepcificBookURL){
+    if(isItInMyPockList == true){
+        return '<button id="trash-'+cardNumber+'" class="btn"><i class="fa-solid fa-trash card-component" onclick= "removeABookFromMyPochList(\''+specificBookISBN+'\')"></i></button>';
+    }else if(isItInMyPockList==false){
+        return '<button id="bookmark-'+cardNumber+'" class="btn bookmark"><i class="fa-solid fa-bookmark card-component" onclick= "populateMyPochListDiv(\''+ specificBookISBN +'\',\''+ sepcificBookURL +'\')"></i></button><br>';
+    }
 }
