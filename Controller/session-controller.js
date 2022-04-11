@@ -14,7 +14,8 @@ function saveDataInLocalStorage(key, url){
    localStorage.setItem(key, url);
 }
 async function getListOfItemsFromLocalStorage(){
-    let listOfDivTagsToDisplay ;
+    // "" prevent from displaying 'unknown' in the html Template.
+    let listOfDivTagsToDisplay="" ;
     for(let i =0; i < localStorage.length ;i++){
         let urlOfBook = localStorage.getItem(localStorage.key(i));
         console.log("local storage  book url - "+ urlOfBook);
