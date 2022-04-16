@@ -8,16 +8,16 @@ To store books in a local session Window's Session Storage was used : https://de
 Before you proceed make sure your internet browser is up to date. Loock at this page https://caniuse.com/?search=sessionstorage, and apply the changes if deemed necessary. This page was updated on the 18 of march 2022.
 # How to install the project on your local computer
 ...
-**1- You are on Windows**
+<br/>**1- You are on Windows**<br/>
 On your local disc, go into the folder you want to install this repository in. Then right click on it to open Git Bash Here.
 Enter the command line : git clone https://github.com/murielProton/P6-PochLib.git . Press enter. And first step DONE !
 Now for step two. Using common Windows folders, go where you have cloned this project. Click on the 'Vue' folder. Now, double click on search_book_vue.html. It will have the logotype of your default browser, mine is Chrome. It will open this app directly into a local internet page. 
 Last step, you will be able to search Google Book API for your favorite book ant other, provided your computer has a Wifi connection or an RJ45 cable plugged in. You will also be able to save records on your list of preferred books.
-**2- You are on a Mac**
+<br/>**2- You are on a Mac**<br/>
 On your local desk find the 'Launchpad' : a space ship. Click on 'Other', then Terminal. There navigate your way to the right place you want to use locally to store this work, with 'cd ..' and 'cd name of the folder'. Then you can enter the magic words : git clone https://github.com/murielProton/P6-PochLib.git . Press enter. And first step DONE !
 Now for step two. From the Finder's Go menu, choose the folder you have put this work in, and go to the folder 'Vue'. Now, double click on search_book_vue.html. It will automatically open this file into the mac browser.
 Last step I'm afraid won't be completed. You will be able to use the search Google Book API part, but the part where you save some books with Window. SessionStorage might be flawed. Safari might just not allow it to work. From what has been published on the WEB on the 18 march of 2022 (https://caniuse.com/?search=sessionstorage), you'll have to make sure your Safari is at least version 4-15.3.
-**3- You are on Linux**
+<br/>**3- You are on Linux**<br/>
 If you are on Linux you probably already know how to open your terminal. So just navigate where you want this project to be and BAM : git clone https://github.com/murielProton/P6-PochLib.git . Press enter. And first step DONE !
 Now for step two. Stay in your terminal enter :'cd P6-PochLib', then 'cd Vue'. There you can enter this last command line : 'name of your favorite browser search_book_vue.html' or 'firefox search_book_vue.html'.
 Last step, you will be able to search Google Book API for your favorite book ant other, provided your computer has a Wifi connection or an RJ45 cable plugged in. You will also be able to save records on your list of preferred books.
