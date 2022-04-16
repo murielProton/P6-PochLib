@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" onload="deleteLocalStorageContent()"></html>
+<html lang="fr" onload="deleteLocalStorageContent()">
 	<head>
 		<title>Poch'Lib</title>
 		<meta charset="utf-8" />
@@ -15,16 +15,16 @@
 			<div id="search-section" class="search-section">
 					<div id="section-form" class="section-form">
 					<h1>Nouveau livre</h1>
-					<button id="new-book-button" class="green-button center-element" type="cancel" value="new-book" onclick="newBookButtonDisplayForm()">Ajouter un livre</button>
+					<button id="new-book-button" class="green-button center-element" value="new-book" onclick="newBookButtonDisplayForm()">Ajouter un livre</button>
 					<br>
-					<form id="search-form" action="" >
+					<form id="search-form">
 						<label for="form-title">Titre du livre</label><br>
 						<input id="form-title" type="text" placeholder="any title ..."  name="form-title"><br>
 						<label for="form-author">Auteur</label><br>
 						<input id="form-author" type="text" placeholder="any name ..." name="form-author"><br><br>
 						<button id="book-search-button" class="green-button" type="button" onclick="searchForAListOfBooks()">Rechercher</button>
 						<br>
-						<button id="cancel-search-button" class="red-button" type="cancel" value="Annuler" onclick="cancelDisplayOfSearchForm()">Annuler</button>
+						<button id="cancel-search-button" class="red-button" value="Annuler" onclick="cancelDisplayOfSearchForm()">Annuler</button>
 					</form>	  
 				</div>																	
 			</div>
@@ -36,7 +36,7 @@
 			<div id="my-pock-list" >
 				<h1>Ma poch'liste</h1>
 				<div id="my-pock-list-display"></div>
-				<button id="delet-pock-list-button" class="red-button align-element-left" type="cancel" value="Annuler" onclick="deleteLocalStorageContent()">Vider Ma Poch'List</button>
+				<button id="delet-pock-list-button" class="red-button align-element-left" value="Annuler" onclick="deleteLocalStorageContent()">Vider Ma Poch'List</button>
 				
 			</div>
 
@@ -44,7 +44,7 @@
         <!--Scripts and other things-->
         
          <!--In the script at the end of the body always put the library first -->
-         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		 <script src="https://kit.fontawesome.com/7fab9bbed0.js" crossorigin="anonymous"></script>
          <!--In second put all the local depedencies-->
          <script src="../Controller/books-list.js"></script>
