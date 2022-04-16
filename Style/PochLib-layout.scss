@@ -3,10 +3,10 @@
 $open-sans: 'Open Sans', sans-serif;
 $normal-weight:    200;
 $bold-weight:    900;
-$colour-green:#28d2bf;
-$colour-grey:#e8f3f1;
-$colour-red: #e26d5e;
-$colour-black:#031e1b;
+$color-green:#28d2bf;
+$color-grey:#e8f3f1;
+$color-red: #e26d5e;
+$color-black:#031e1b;
 body{
     font-family: $open-sans;
     font-weight: $normal-weight;
@@ -20,8 +20,8 @@ h1, h2, h3, h4, h5{
 }
 .background-colour-grey{
     margin-top: 10%;
-    background-color: $colour-grey;
-    border-bottom: 3px solid $colour-green;
+    background-color: $color-grey;
+    border-bottom: 3px solid $color-green;
 }
 #logo{
     width:10%;
@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5{
 }
 #section-form{
     padding-bottom: 1%;
-    border-bottom: 3px solid $colour-green;
+    border-bottom: 3px solid $color-green;
 }
 form {
     text-align: center;
@@ -41,7 +41,7 @@ input {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid $colour-black;
+    border: 1px solid $color-black;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -49,14 +49,14 @@ label{
     float: left;
 }
 .green-button{
-   background-color: $colour-green;
+   background-color: $color-green;
    display: block;
    padding: 14px 40px;
    border:none;
    border-radius: 5px;
 }
 .red-button{
-    background-color: $colour-red;
+    background-color: $color-red;
     display: block;
     padding: 14px 50px;
     border:none;
@@ -67,7 +67,7 @@ label{
     margin-right:auto;
  }
 #cancel-button{
-    background-color: $colour-grey;
+    background-color: $color-grey;
     padding: 14px 40px;
     border:none;
     border-radius: 5px;
@@ -95,6 +95,9 @@ label{
     .card-body > .trash{
         display:none;
     }
+}
+#error {
+    color:$color-red
 }
 @media only screen and (max-width: 320px){
 /*style for smart phones*/

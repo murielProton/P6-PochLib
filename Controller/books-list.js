@@ -37,13 +37,16 @@ function refreshList(googleResponse){
         // totalItems is the number of books composing this object.
         if (googleObjectContainingListOfBooks.totalItems < 1 || googleObjectContainingListOfBooks.totalItems == null){
             var errorMessage = 'Aucun livre n’a été trouvé.';
-            divErrorNoBooksWereFound(errorMessage);
+            displayDivError(errorMessage);
         }else{
+            
             listOfBooksDisplayInHTML(googleObjectContainingListOfBooks);
         }
     });
 }
 async function searchForAListOfBooks(){
+    //do not display the error section
+    document.getElementById("error-section").innerHTML = "";
     // google search : isbn: Returns results where the text following this keyword is the ISBN number.
     searchTermsForTitle = getSearchTermsForTitle();
     searchTermsForAuthor = getSearchTermsForAuthor();

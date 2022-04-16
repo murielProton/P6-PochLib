@@ -24,10 +24,10 @@ function diplayInResultDisplay(){
     displayElement(idButtonToToggleBookMark);
 }
 function hideElement(elementsID){
-    document.getElementById(elementsID).style.display = 'none';
+    document.getElementById(elementsID).style.display = "none";
 }
 function displayElement(elementsID){
-    document.getElementById(elementsID).style.display = 'none';
+    document.getElementById(elementsID).style.display = "none";
 }
 function whichButtonToDisplay(isItInMyPockList, specificBookISBN, cardNumber, sepcificBookURL){
     if(isItInMyPockList == true){

@@ -96,6 +96,10 @@ label {
   display: none;
 }
 
+#error {
+  color: #e26d5e;
+}
+
 @media only screen and (max-width: 320px) {
   /*style for smart phones*/
   div .card-body {

@@ -26,13 +26,18 @@ async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
     document.getElementById("result-display").innerHTML = "";
     let listOfDivTagsToDisplay = "<h1>Résultats de la recherche</h1>";
     if (listOfBooksToDisplay){
-        if (listOfBooksToDisplay.items.length ==0){
-            //listOfDivTagsToDisplay ="<p>Aucun livre n’a été trouvé.</p>";
-            listOfDivTagsToDisplay ="Aucun livre n’a été trouvé.";
-            divErrorNoBooksWereFound(listOfDivTagsToDisplay);
+        if (listOfBooksToDisplay.items.length <=1){
+            //error handeling
+            errorMessage ="Aucun livre n’a été trouvé.";
+            displayDivError(errorMessage);
         }
         else if (listOfBooksToDisplay.items.length == 1){
-            let thisURL = listOfBooksToDisplay.items[i].selfLink;
+            if(listOfBooksToDisplay.items[1]==undefined){
+                errorMessage ="Aucun livre n’a été trouvé.";
+                displayDivError(errorMessage);
+            }
+            console.log("listOfBooksToDisplay.items[1] - "+listOfBooksToDisplay)
+            let thisURL = listOfBooksToDisplay.items[1].selfLink;
             let listOfDivTagsToDisplay = await divBookWithGoogleInput(1, thisURL,false);
         }else if (listOfBooksToDisplay.items.length>=2){
             //second I insert a div witch Id will be "card-number-"+i
@@ -45,7 +50,9 @@ async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
             }
         }
     }else{
-        listOfDivTagsToDisplay ="<p>Aucun livre n’a été trouvé.</p>";
+        errorMessage ="Aucun livre n’a été trouvé.";
+        displayDivError(errorMessage);
+        
     }
     document.getElementById("result-display").innerHTML = listOfDivTagsToDisplay;
 }

@@ -1,7 +1,11 @@
 function populateMyPochListDiv(isbn, url){
-    saveDataInLocalStorage(isbn, url);
-    console.log('populateMyPochListDiv ISBN : '+isbn)
-    displayLocalStorageInMyPochList();
+    if(isThisISBNInLocalStorage(isbn)==true){
+        var errorMessage ="Vous ne pouvez ajouter deux fois le même livre.";
+        displayDivError(errorMessage);
+    }else if (isThisISBNInLocalStorage(isbn)==false){
+        saveDataInLocalStorage(isbn, url);
+        displayLocalStorageInMyPochList();
+    }
 }
 async function displayLocalStorageInMyPochList(){
     //first I erase all content fo the div with Id "result-display"
@@ -9,9 +13,18 @@ async function displayLocalStorageInMyPochList(){
     let listOfDivTagsToDisplay = await getListOfItemsFromLocalStorage();
     document.getElementById("my-pock-list-display").innerHTML = listOfDivTagsToDisplay;
 }
+function isThisISBNInLocalStorage(isbn){
+    if (localStorage.getItem(isbn) === null){
+        return false;
+    }  else{
+        return true;
+    }
+}
 function saveDataInLocalStorage(key, url){
+  
     console.log('saveDataInLocalStorage ISBN : '+key)
-   localStorage.setItem(key, url);
+        localStorage.setItem(key, url);
+
 }
 async function getListOfItemsFromLocalStorage(){
     // "" prevent from displaying 'unknown' in the html Template.
