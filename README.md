@@ -7,6 +7,7 @@ To store books in a local session Window's Session Storage was used : https://de
 # Requirements
 Before you proceed make sure your internet browser is up to date. Loock at this page https://caniuse.com/?search=sessionstorage, and apply the changes if deemed necessary. This page was updated on the 18 of march 2022.
 # How to install the project on your local computer
+...
 **1- You are on Windows**
 On your local disc, go into the folder you want to install this repository in. Then right click on it to open Git Bash Here.
 Enter the command line : git clone https://github.com/murielProton/P6-PochLib.git . Press enter. And first step DONE !
