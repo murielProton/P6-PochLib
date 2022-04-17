@@ -54,6 +54,7 @@ async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
         displayDivError(errorMessage);
         
     }
+    loadingCompleet = true;
     document.getElementById("result-display").innerHTML = listOfDivTagsToDisplay;
 }
 

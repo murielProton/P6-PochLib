@@ -8,9 +8,11 @@ function populateMyPochListDiv(isbn, url){
     }
 }
 async function displayLocalStorageInMyPochList(){
+    loadingCompleet = false;
     //first I erase all content fo the div with Id "result-display"
     document.getElementById("my-pock-list-display").innerHTML = "";
     let listOfDivTagsToDisplay = await getListOfItemsFromLocalStorage();
+    loadingCompleet = true;
     document.getElementById("my-pock-list-display").innerHTML = listOfDivTagsToDisplay;
 }
 function isThisISBNInLocalStorage(isbn){

@@ -45,6 +45,7 @@ function refreshList(googleResponse){
     });
 }
 async function searchForAListOfBooks(){
+    loadingCompleet = false;
     //do not display the error section
     document.getElementById("error-section").innerHTML = "";
     // google search : isbn: Returns results where the text following this keyword is the ISBN number.
@@ -71,8 +72,5 @@ async function searchForAListOfBooks(){
     refreshList(googleResponse);
    // resetSearchTerms();
 }
-// TODO mayby reset the search terms to null. 
-function resetSearchTerms(){
 
-}
 

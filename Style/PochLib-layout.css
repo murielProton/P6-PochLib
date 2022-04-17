@@ -30,6 +30,13 @@ h1, h2, h3, h4, h5 {
   border-bottom: 3px solid #28d2bf;
 }
 
+#loading-section {
+  text-align: center;
+  color: #28d2bf;
+  font-size: 2.2em;
+  padding-top: 1%;
+}
+
 form {
   text-align: center;
 }
