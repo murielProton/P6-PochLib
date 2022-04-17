@@ -1,10 +1,5 @@
 //googleBook must be set before all the other values of this objects are.
 // I've aded an if line 10 to ensure that 
-// book.js:46 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'thumbnail')
-// doese not apear again
-// but there is an url for each images of this imageLinks so why error
-//TODO check if I can do without calling to ifNoImageIsFound(immageURL) line 58 and 52
-// TODO what if title autor or description is not found what does the code do ?
 var unavailableInformation ="Information manquante";
 var counter;
 var fakeISBN;
@@ -41,7 +36,6 @@ async function Book(sepcificBookURL){
 }
 async function fetchThisBook(sepcificBookURL){
     const response = await fetch(sepcificBookURL);
-    console.log('response : ',response);
     googleBook = await response.json();
     return googleBook;
 }
@@ -76,34 +70,17 @@ function getThisBookSIsbn(googleBook){
     }
 }
 function getThisBookSImage(googleBook){
-    console.log('Image URL : ', googleBook.volumeInfo.imageLinks.thumbnail);
-
    imageURL = googleBook.volumeInfo.imageLinks.thumbnail;
    return imageURL;
-  /*   let checkedImageURL = ifNoImageIsFound(imageURL);
-    return checkedImageURL;*/
 }
 function getThisBookSSmallImage(googleBook){
-    console.log('small image URL : ', googleBook.volumeInfo.imageLinks.smallThumbnail);
     smallImageURL = googleBook.volumeInfo.imageLinks.smallThumbnail;
     return smallImageURL;
-    /*let checkedSmallImageURL = ifNoImageIsFound(smallImageURL);
-    return checkedSmallImageURL;*/
 }
-/*function ifNoImageIsFound(immageURL){
-    if(immageURL){
-        return immageURL;
-    }else{
-        console.log('image est null indeffinie ou vide');
-        let emptyImageURL = unavailableImageURL;
-        return emptyImageURL;
-    }
-}*/
 function ifNoDataFound(data){
     if(data){
         return data;
     }else{
-        console.log('Description : Information manquante');
         let emptyData = unavailableInformation;
         divErrorNoBooksWereFound(emptyData);
     }

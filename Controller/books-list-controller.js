@@ -1,11 +1,8 @@
-/*first find the div where to display div id = result-display
-* second empty the div
-* loop for each where {
-    first i insert tockens in HTML
-    second i insert the book in HTML
-}
-*/
-//
+/** 
+ * this function construct an HTML div whit the information passed on by the URL.
+ * the parameter cardNumber ensures the HTML id of the tags are unique.
+ * The parameter isItInMyPockList defines wich buttons to display : eather the adding to the Poch'liste or the removing from the Poch'list. It is a boolean.
+ */
 async function divBookWithGoogleInput(cardNumber, ABookURL, isItInMyPockList){
     var sepcificBookURL = ABookURL;
     let wantedBook = await Book(sepcificBookURL);
@@ -21,6 +18,10 @@ async function divBookWithGoogleInput(cardNumber, ABookURL, isItInMyPockList){
     '</div>';
     return divCardToInsert;
 }
+/** 
+ * this function construct a list of books to diplay in tag ideed "result-display".
+ * the parameter listOfBooksToDisplay is a list. It's number of items will define how many 'div id=card-number-x' will be displayed in HTML.
+ */
 async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
     //first I erase all content fo the div with Id "result-display"
     document.getElementById("result-display").innerHTML = "";
@@ -36,7 +37,6 @@ async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
                 errorMessage ="Aucun livre n’a été trouvé.";
                 displayDivError(errorMessage);
             }
-            console.log("listOfBooksToDisplay.items[1] - "+listOfBooksToDisplay)
             let thisURL = listOfBooksToDisplay.items[1].selfLink;
             let listOfDivTagsToDisplay = await divBookWithGoogleInput(1, thisURL,false);
         }else if (listOfBooksToDisplay.items.length>=2){
@@ -44,7 +44,7 @@ async function listOfBooksDisplayInHTML(listOfBooksToDisplay){
             // the 'for loop' begins at 0, the comparison must be a stric < cause 0 to 20 = 21, but 0 to 19 = 20.
             for(let i=0; i<listOfBooksToDisplay.items.length;i++ ){
                 let currentURL = listOfBooksToDisplay.items[i].selfLink;
-                // The next line set a variable with an async fuction, Therefor an AWAIT is required.
+                // The next line set a variable with an async function, Therefor an AWAIT is required.
                 let newDivTagToDisplay = await divBookWithGoogleInput(i, currentURL,false);
                 listOfDivTagsToDisplay = listOfDivTagsToDisplay+newDivTagToDisplay;
             }

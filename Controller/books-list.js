@@ -14,18 +14,28 @@ https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPI
 const URLforSearch = "https://www.googleapis.com/books/v1/volumes?q=";
 const numberOfResults =20;
 var listOfBooks =[];
-
+/** 
+ * this function gets the title input from the HTML form in tag ideed "search-form".
+ * it returns a string.
+ */
 function getSearchTermsForTitle(){
     // Selecting the input for the title and get its value 
     searchTermsForTitle = document.getElementById("form-title").value;
     return searchTermsForTitle;
 }
+/** 
+ * this function gets the author input from the HTML form in tag ideed "search-form".
+ * it returns a string.
+ */
 function getSearchTermsForAuthor(){
     // Selecting the input for the author and get its value 
     searchTermsForAuthor = document.getElementById("form-author").value;
     return searchTermsForAuthor;
 }
-
+/** 
+ * this function waits on the reponse of Google Books API before displaying a list of books or displaying an error.
+ * The parameter is the response of Google Books API.
+ */
 function refreshList(googleResponse){
     var googleObjectContainingListOfBooks;
     const promiseGetListOfBooks = new Promise((resolve, reject) => {
@@ -44,8 +54,17 @@ function refreshList(googleResponse){
         }
     });
 }
+/** 
+ * this function will create a JSON object which is a response of the Google Books API.
+ * It construct the URL to ask Google Books API for an answer.
+ * It URL constructed under 3 conditions : 
+ *                                         - the input is an author and a title
+ *                                         - the input is only the title
+ *                                         - the input is only the author
+ */
 async function searchForAListOfBooks(){
     loadingCompleet = false;
+    displayLoadingSection();
     //do not display the error section
     document.getElementById("error-section").innerHTML = "";
     // google search : isbn: Returns results where the text following this keyword is the ISBN number.
@@ -68,9 +87,7 @@ async function searchForAListOfBooks(){
     }
     const response = await fetch(urlToCall);
     let googleResponse = await response.json();
-    //listToDisplay is not defined
     refreshList(googleResponse);
-   // resetSearchTerms();
 }
 
 
