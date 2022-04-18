@@ -1,5 +1,5 @@
 let isItInMyPockList;
-let loadingCompleet;
+let loadingSectionId = "loading-section";
 /** 
  * this function is a toggle set on the button ideed "new-book-button".
  * the button ideed "new-book-button" displays the form in the HTML page.
@@ -19,8 +19,7 @@ function newBookButtonDisplayForm(){
  * this function calls on two other functions and hides the form.
  * */
 function onloadDisplay(){
-    loadingCompleet = true;
-    displayLoadingSection();
+    hideLoadingSection();
     displayLocalStorageInMyPochList();
     document.getElementById("search-form").style.display = "none";
 }
@@ -39,7 +38,8 @@ function cancelDisplayOfSearchForm(){
  * 
  * */
 function hideElement(elementsID){
-    document.getElementById(elementsID).style.display = "none";
+    //document.getElementById(elementsID).style.display = "none";
+    $("#"+elementsID).hide();
 }
 /** 
  * this function will display the tag ideed by it's parameter.
@@ -47,7 +47,8 @@ function hideElement(elementsID){
  * 
  * */
 function displayElement(elementsID){
-    document.getElementById(elementsID).style.display = "none";
+    $("#"+elementsID).show();
+    //document.getElementById(elementsID).style.display = "none";
 }
 /** 
  * this function returns a HTML button tag.
@@ -63,15 +64,11 @@ function whichButtonToDisplay(isItInMyPockList, specificBookISBN, cardNumber, se
         return '<button id="bookmark-'+cardNumber+'" class="btn bookmark"><i class="fa-solid fa-bookmark card-component" onclick= "populateMyPochListDiv(\''+ specificBookISBN +'\',\''+ sepcificBookURL +'\')"></i></button><br>';
     }
 }
-/** 
- * This function should display or not the div ideed "loading-section" when the data is loading.
- * WARNING under construction.
- * */
-function displayLoadingSection(){
-    var elementsID ="loading-section";
-    if (loadingCompleet == true){
-        hideElement(elementsID);
-    }else if (loadingCompleet == false){
-        displayElement(elementsID);
-    }
+
+function  hideLoadingSection(){
+    hideElement(loadingSectionId);
+}
+
+function  displayLoadingSection(){
+    displayElement(loadingSectionId);
 }

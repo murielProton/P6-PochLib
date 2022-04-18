@@ -18,12 +18,12 @@
 					<h1>Nouveau livre</h1>
 					<button id="new-book-button" class="green-button center-element" value="new-book" onclick="newBookButtonDisplayForm()">Ajouter un livre</button>
 					<br>
-					<form id="search-form">
+					<form id="search-form" onsubmit="searchForAListOfBooks(); return false;">
 						<label for="form-title">Titre du livre</label><br>
 						<input id="form-title" type="text" placeholder="any title ..."  name="form-title"><br>
 						<label for="form-author">Auteur</label><br>
 						<input id="form-author" type="text" placeholder="any name ..." name="form-author"><br><br>
-						<button id="book-search-button" class="green-button" type="button" onclick="searchForAListOfBooks()">Rechercher</button>
+						<button id="book-search-button" class="green-button" type="submit" onclick="searchForAListOfBooks()">Rechercher</button>
 						<br>
 						<button id="cancel-search-button" class="red-button" value="Annuler" onclick="cancelDisplayOfSearchForm()">Annuler</button>
 					</form>	  

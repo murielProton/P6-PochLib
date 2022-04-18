@@ -18,13 +18,11 @@ function populateMyPochListDiv(isbn, url){
  * this function waits for the listOfDivTagsToDisplay to be loaded, before it displays this list inside the tag ideed "my-pock-list-display".
  */
 async function displayLocalStorageInMyPochList(){
-    loadingCompleet = false;
     displayLoadingSection();
     //first I erase all content fo the div with Id "result-display"
     document.getElementById("my-pock-list-display").innerHTML = "";
     let listOfDivTagsToDisplay = await getListOfItemsFromLocalStorage();
-    loadingCompleet = true;
-    displayLoadingSection();
+    hideLoadingSection();
     document.getElementById("my-pock-list-display").innerHTML = listOfDivTagsToDisplay;
 }
 /** 

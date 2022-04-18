@@ -54,6 +54,12 @@ function refreshList(googleResponse){
         }
     });
 }
+/**TODO This function executes  searchForAListOfBooks()
+ *          if the user is in "search-section"
+ *          if the user press the key 'Enter'
+ * this functions equals clicking on button "Rechercher" or ideed "book-search-button"
+*/
+
 /** 
  * this function will create a JSON object which is a response of the Google Books API.
  * It construct the URL to ask Google Books API for an answer.
@@ -63,7 +69,6 @@ function refreshList(googleResponse){
  *                                         - the input is only the author
  */
 async function searchForAListOfBooks(){
-    loadingCompleet = false;
     displayLoadingSection();
     //do not display the error section
     document.getElementById("error-section").innerHTML = "";
@@ -89,5 +94,3 @@ async function searchForAListOfBooks(){
     let googleResponse = await response.json();
     refreshList(googleResponse);
 }
-
-

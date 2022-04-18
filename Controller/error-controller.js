@@ -8,4 +8,6 @@ function displayDivError(errorMessage){
         '<p id="error-message" class=card-text">Une erreur est survenue : '+errorMessage+'</p>' +
     '</div>';
     document.getElementById("error-section").innerHTML = divCardToInsert;
+    document.getElementById("result-display").innerHTML = "";
+    hideLoadingSection();
 }
