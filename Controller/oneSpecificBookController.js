@@ -66,11 +66,11 @@
      * JQuery function.
      * This function detects the readyness of the page.
      * If the page is not ready init() will not lauch.
-     * 
+     * NOT USED
     */
-    $(document).ready(function(){
+   /* $(document).ready(function(){
         init();
-    })
+    })*/
     /** 
      * this function will find in the HTML document the right tag id name to associate with the right variable.
      * It will display information of the book in the right order in the HTML page.
@@ -89,8 +89,9 @@ function diplayAllValuesOfThisBook(){
      * This funciton waits for two things before diplaying all information of a book into the HTML page.
      * First it waits until the specific URL of The book has been set.
      * lastly it waits until all the variables to construct a book localy have been assigned.
+     *  NOT USED
      */
-function init(){
+/*function init(){
     //FIRST you fetch the entire book
     const promise1 = new Promise((resolve, reject) => {
         resolve(oneSpecifiedBoockOnly = fetchBookABook(sepcificBookURL));
@@ -107,4 +108,4 @@ function init(){
         resolve(diplayAllValuesOfThisBook());
       });
     
-}
+}*/
