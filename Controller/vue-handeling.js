@@ -1,15 +1,16 @@
 let isItInMyPockList;
 let loadingSectionId = "loading-section";
+
+let idButtonAddNewBook = "new-book-button";
 /** 
  * this function is a toggle set on the button ideed "new-book-button".
  * the button ideed "new-book-button" displays the form in the HTML page.
  * */
 function newBookButtonDisplayForm(){
-    var idButtonToToggle = "new-book-button";
     var htmlElementToDisplay = document.getElementById("search-form");
     if (htmlElementToDisplay.style.display === "none") {
         htmlElementToDisplay.style.display = "block";
-        hideElement(idButtonToToggle);
+        hideElement(idButtonAddNewBook);
     } else {
         htmlElementToDisplay.style.display = "none";
     }
@@ -29,6 +30,7 @@ function onloadDisplay(){
  * 
  * */
 function cancelDisplayOfSearchForm(){
+    displayElement(idButtonAddNewBook);
     document.getElementById("search-form").style.display = "none";
     document.getElementById("result-display").innerHTML = "";
 }

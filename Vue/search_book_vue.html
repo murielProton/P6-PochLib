@@ -12,7 +12,7 @@
 				<img id="logo" src="../Image/logo-transparent-white.png" alt="logo"/>
 			</div>
 			<div id="loading-section"><i class="fa-solid fa-spinner fa-spin-pulse"></i><b> Loading, please wait. </b><i class="fa-solid fa-spinner fa-spin-pulse"></i></div>
-			<div id="error-section" class="error-section"></div>
+			
 			<div id="search-section" class="search-section">
 					<div id="section-form" class="section-form">
 					<h1>Nouveau livre</h1>
@@ -23,9 +23,10 @@
 						<input id="form-title" type="text" placeholder="any title ..."  name="form-title"><br>
 						<label for="form-author">Auteur</label><br>
 						<input id="form-author" type="text" placeholder="any name ..." name="form-author"><br><br>
+						<div id="error-section" class="error-section"></div>
 						<button id="book-search-button" class="green-button" type="submit" onclick="searchForAListOfBooks()">Rechercher</button>
 						<br>
-						<button id="cancel-search-button" class="red-button" value="Annuler" onclick="cancelDisplayOfSearchForm()">Annuler</button>
+						<button id="cancel-search-button" class="red-button" value="Annuler" onclick="cancelDisplayOfSearchForm(); return false;">Annuler</button>
 					</form>	  
 				</div>																	
 			</div>
